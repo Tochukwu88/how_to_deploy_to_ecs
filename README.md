@@ -3,7 +3,7 @@ In this exercise, you will use Amazon Elastic Container Registry (Amazon ECR) to
 
 To begin, follow the steps below.
 
-1. Create an Amazon ECR repository for timezones-frontend container.
+# 1. Create an Amazon ECR repository for timezones-frontend container.
 In this section, you will create an Amazon ECR repository for the timezones-frontend container you built in the last exercise. Follow the steps below.
 
 Sign in to the AWS Management Console as the edXOptimizingUser IAM user.
@@ -47,7 +47,7 @@ To push the timezones-frontend container image to Amazon ECR, copy the docker pu
 
 In your AWS Cloud9 terminal, run the docker push command you copied in the previous step.
 Once the image is pushed, return to the console and click Done at the bottom. You should see that the timezones-frontend repository contains the timezones-frontend image tagged as latest.
-2. Create an Amazon ECR repository for timezones-appserver container.
+ # 2. Create an Amazon ECR repository for timezones-appserver container.
 In this section, you will create an Amazon ECR repository for the timezones-appserver container you built in the last exercise. Follow the steps below.
 
 In the console, click Services, then click Elastic Container Service to open the Amazon ECS dashboard.
@@ -68,11 +68,11 @@ Copy the repository URL for the timezones-appserver image. Refer to the screensh
 To push the timezones-appserver container image to Amazon ECR, copy the docker push command mentioned in step 5 in the console.
 In your Cloud9 terminal, run the docker push command you copied in the previous step.
 Once the image is pushed, return to the console and click Done at the bottom. You should see that the timezones-frontend repository contains the timezones-appserver image tagged as latest.
-3. Create an Amazon ECS cluster.
+ # 3. Create an Amazon ECS cluster.
 In this section, you will create an Amazon ECS and deploy the containers you pushed to the Amazon ECR repositories in the last section. Follow the steps below.
 
 In the console, click Services, then click Elastic Container Service to open the Amazon ECS dashboard.
-Make sure you are in the Oregon region.
+
 In the left side navigation menu, click Clusters.
 Click Create Cluster.
 Click the EC2 Linux + Networking box.
@@ -82,7 +82,7 @@ For EC2 instance type, select t2.micro which is free tier eligible.
 If you have a key pair in your account, you can select the key pair in the Key pair drop-down menu. This will enable you to SSH into the cluster instance and help you with debugging if something goes wrong. Note: This is an optional step.
 Leave the rest of the defaults and scroll down and click Create. It will take 2-3 minutes for Amazon ECS to create the cluster.
 Once the cluster is created, click View cluster to view the cluster details.
-4. Create an Application Load Balancer.
+# 4. Create an Application Load Balancer.
 In this section, you will create an Application Load Balancer and configure it such that the web traffic to the Amazon ECS cluster is routed via the load balancer. Follow the steps below.
 
 In the console, click Services, then click EC2 to open the Amazon EC2 dashboard.
@@ -104,7 +104,7 @@ Click Next: Register Targets.
 Skip the Register Targets page and click Next: Review.
 Click Create. This will provision the load balancer.
 Click Close.
-5. Edit the security group for the Amazon ECS cluster.
+# 5. Edit the security group for the Amazon ECS cluster.
 In this section, you will modify the Amazon ECS cluster security group rule to allow all TCP traffic from the application load balancer.
 
 In the console, click Services, then click EC2 to open the Amazon EC2 dashboard.
@@ -117,7 +117,7 @@ For Source, delete the existing text, type alb and then select the security grou
 Click Save.
 You have successfully modified the Amazon ECS cluster security group to allow all TCP traffic from the application load balancer.
 
-6. Create a task definition for the timezones-appserver container.
+ # 6. Create a task definition for the timezones-appserver container.
 In this section, you will create a task definition for the timezones-appserver container. Then you will create a task from the task definition and run the task as service inside the Amazon ECS cluster. Follow the steps below.
 
 In the console, click Services, then click Elastic Container Service to open the Amazon ECS dashboard.
@@ -140,7 +140,7 @@ Leave the rest of the settings to default and click Add at the bottom.
 Click Create. You should see a success message.
 You have successfully created a task definition for the timezones-appserver container.
 
-7. Launch a task for the timezones-appserver container.
+ # 7. Launch a task for the timezones-appserver container.
 In this section, you will launch a task as a service from the timezones-appserver-task task definition and run the task inside the Amazon ECS cluster. Follow the steps below.
 
 In the Amazon ECS dashboard, click Clusters in the left side navigation menu.
@@ -164,7 +164,7 @@ Click Next step.
 Skip the Set Auto Scaling (optional) page and click Next step.
 On the Review page, scroll down and click Create Service. This will create the service for the timezones-appserver container in a few seconds.
 Click View Service. You should see the task status as RUNNING. You may need to refresh the page to see the status.
-8. Verify the timezones-appserver container via the load balancer.
+# 8. Verify the timezones-appserver container via the load balancer.
 In this section, you will verify whether the timezones-appserver service you launched in the Amazon ECS cluster in the last section is running and is accessible via the load balancer DNS name. Follow the steps below.
 
 In the console, click Services, then click EC2 to open the EC2 dashboard.
